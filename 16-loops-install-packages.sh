@@ -27,6 +27,8 @@ fi
 for package in $@
 do
   echo "Going to install : $package"
+  dnf install ${package} -y &>> ${log}
+  validate $? ${package} "Installation"
 done
 
 echo "Script completion execution at $(date "+%F +%T" )" &>> ${log_file}
