@@ -3,6 +3,9 @@
 user_id=$(id -u)
 logs_folder="/var/logs/shell-practice"
 log_file="${logs_folder}/${0}.log"
+R="\e[31m"
+G="\e[32"
+Y="\e[0m"
 
 if [ $user_id -ne 0 ]; then
     echo "Please run the command sudo access.."
@@ -16,10 +19,10 @@ echo "Script starting execution at $(date "+%F +%T" )" &>> ${log_file}
 validate()
 {
 if [ $? -ne $1 ]; then
-    echo "${2} FAILED" | tee -a ${log_file}
+    echo "${2} ${R}FAILED${N}" | tee -a ${log_file}
     exit 1
 else
-    echo "${2} SUCCESS" | tee -a ${log_file}
+    echo "${2} ${G}SUCCESS${N}" | tee -a ${log_file}
 fi
 }
 
@@ -32,7 +35,7 @@ if [ $? -ne 0 ]; then
   dnf install ${package} -y &>> ${log_file}
   validate $? ${package} "Installation"
  else
-    echo "${package} already installed" | tee -a ${log_file}
+    echo -e "${package} already installed  ${Y}SKIIPED${N}" | tee -a ${log_file}
 fi
 done
 
