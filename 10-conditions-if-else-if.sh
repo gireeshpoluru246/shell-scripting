@@ -13,3 +13,4 @@ elif [ $(($marks -le 60 && $marks -lt 75)) ]; then
         echo "Student is first class : ${marks}"
 elif [ $(($marks -gt 75)) ]; then
         echo "Student is distinction : ${marks}"
+fi
