@@ -18,7 +18,7 @@ fi
 
 dnf install mysql -y 
 
-if [ $? -ne 0]
+if [ $? -ne 0]; then
     echo "Mysql client installation failed."
 else
     echo "Mysql client installation success.."
