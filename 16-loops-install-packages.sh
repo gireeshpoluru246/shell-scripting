@@ -34,7 +34,7 @@ do
 if [ $? -ne 0 ]; then
   echo "Going to install : $package"
   dnf install ${package} -y &>> ${log_file}
-  validate $? ${package} Installation"
+  validate $? "${package} Installation"
  else
     echo -e "${package} already installed ${Y}SKIPPED${N}" | tee -a "$log_file"
 fi
