@@ -4,7 +4,8 @@ user_id=$(id -u)
 logs_folder="/var/logs/shell-practice"
 log_file="${logs_folder}/${0}.log"
 R="\e[31m"
-G="\e[32"
+G="\e[32m"
+N="\e[33m"
 Y="\e[0m"
 
 if [ $user_id -ne 0 ]; then
@@ -35,7 +36,7 @@ if [ $? -ne 0 ]; then
   dnf install ${package} -y &>> ${log_file}
   validate $? ${package} "Installation"
  else
-    echo -e "${package} already installed  ${Y}SKIIPED${N}" | tee -a ${log_file}
+    echo -e "${package} already installed ${N}SKIPPED${Y}" | tee -a "$log_file"
 fi
 done
 
