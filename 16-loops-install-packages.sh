@@ -5,8 +5,8 @@ logs_folder="/var/logs/shell-practice"
 log_file="${logs_folder}/${0}.log"
 R="\e[31m"
 G="\e[32m"
-N="\e[33m"
-Y="\e[0m"
+N="\e[0m"
+Y="\e[33m"
 
 if [ $user_id -ne 0 ]; then
     echo "Please run the command sudo access.."
@@ -20,10 +20,10 @@ echo "Script starting execution at $(date "+%F +%T" )" &>> ${log_file}
 validate()
 {
 if [ $? -ne $1 ]; then
-    echo -e "${2} ${N}FAILED${R}" | tee -a ${log_file}
+    echo -e "${2} ${N}FAILED${R}" | tee -a "$log_file"
     exit 1
 else
-    echo -e "${2} ${N}SUCCESS${G}" | tee -a ${log_file}
+    echo -e "${2} ${N}FAILED${G}" | tee -a "$log_file"
 fi
 }
 
